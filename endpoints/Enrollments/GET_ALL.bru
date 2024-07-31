@@ -1,0 +1,18 @@
+meta {
+  name: GET_ALL
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{http}}://{{host}}/enrollments
+  body: none
+  auth: none
+}
+
+query {
+  ~user_id: id1
+  ~limit: 1
+  ~page: 1
+  ~course_id: 
+}

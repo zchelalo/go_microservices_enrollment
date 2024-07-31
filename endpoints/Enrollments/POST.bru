@@ -1,0 +1,18 @@
+meta {
+  name: POST
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{http}}://{{host}}/enrollments
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "user_id": "id2",
+    "course_id": "id2"
+  }
+}

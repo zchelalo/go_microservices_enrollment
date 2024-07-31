@@ -1,0 +1,17 @@
+meta {
+  name: UPDATE
+  type: http
+  seq: 3
+}
+
+patch {
+  url: {{http}}://{{host}}/enrollments/962895cc-2d27-4b4c-9360-2ade99099de1
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "status": "P0"
+  }
+}
