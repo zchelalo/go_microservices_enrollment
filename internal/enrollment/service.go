@@ -4,7 +4,9 @@ import (
 	"context"
 	"log"
 
+	courseSdk "github.com/zchelalo/go_microservices_course_sdk/course"
 	"github.com/zchelalo/go_microservices_domain/domain"
+	userSdk "github.com/zchelalo/go_microservices_user_sdk/user"
 )
 
 type (
@@ -21,15 +23,19 @@ type (
 	}
 
 	service struct {
-		log        *log.Logger
-		repository Repository
+		log               *log.Logger
+		repository        Repository
+		userTransporter   userSdk.Transport
+		courseTransporter courseSdk.Transport
 	}
 )
 
-func NewService(log *log.Logger, repo Repository) Service {
+func NewService(log *log.Logger, repo Repository, userTransporter userSdk.Transport, courseTransporter courseSdk.Transport) Service {
 	return &service{
-		log:        log,
-		repository: repo,
+		log:               log,
+		repository:        repo,
+		userTransporter:   userTransporter,
+		courseTransporter: courseTransporter,
 	}
 }
 
@@ -41,9 +47,19 @@ func (srv *service) Create(ctx context.Context, userId, courseId string) (*domai
 		CourseId: courseId,
 		Status:   "P",
 	}
+
+	if _, err := srv.userTransporter.Get(userId); err != nil {
+		return nil, err
+	}
+
+	if _, err := srv.courseTransporter.Get(courseId); err != nil {
+		return nil, err
+	}
+
 	if err := srv.repository.Create(ctx, &enrollment); err != nil {
 		return nil, err
 	}
+
 	return &enrollment, nil
 }
 

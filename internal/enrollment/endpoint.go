@@ -4,8 +4,10 @@ import (
 	"context"
 	"errors"
 
+	courseSdk "github.com/zchelalo/go_microservices_course_sdk/course"
 	"github.com/zchelalo/go_microservices_meta/meta"
 	"github.com/zchelalo/go_microservices_response/response"
+	userSdk "github.com/zchelalo/go_microservices_user_sdk/user"
 )
 
 type (
@@ -61,6 +63,9 @@ func makeCreateEndpoint(service Service) Controller {
 
 		enrollment, err := service.Create(ctx, req.UserId, req.CourseId)
 		if err != nil {
+			if errors.As(err, &userSdk.ErrNotFound{}) || errors.As(err, &courseSdk.ErrNotFound{}) {
+				return nil, response.NotFound(err.Error())
+			}
 			return nil, response.InternalServerError(err.Error())
 		}
 
