@@ -49,6 +49,8 @@ github.com/zchelalo/go_microservices_domain v0.0.2 h1:TH2MZ37Dt7M7DVlpKSdH4XL7dv
 github.com/zchelalo/go_microservices_domain v0.0.2/go.mod h1:OicrpCwOncnYREpcNochk38CA4IFO+C+FBOYxX1xgTA=
 github.com/zchelalo/go_microservices_domain v0.0.3 h1:fzafWFB5xZH3QiX9ZYASDJecDk2u9I2Rhrn0ABf3Yt8=
 github.com/zchelalo/go_microservices_domain v0.0.3/go.mod h1:OicrpCwOncnYREpcNochk38CA4IFO+C+FBOYxX1xgTA=
+github.com/zchelalo/go_microservices_domain v0.0.4 h1:aWnwQ02dqXUBsmxmZHLoB/IyEOOnQ+iE2BdbZZnBupI=
+github.com/zchelalo/go_microservices_domain v0.0.4/go.mod h1:OicrpCwOncnYREpcNochk38CA4IFO+C+FBOYxX1xgTA=
 github.com/zchelalo/go_microservices_meta v0.0.2 h1:EBkASEtOEVGkyDUYdkfVQnxdRC21+kAPYz1QjVzrkGs=
 github.com/zchelalo/go_microservices_meta v0.0.2/go.mod h1:KOT41Ts2ugX9E9DIPQiKz4vr3XQ35R8usfpppxZbS3g=
 github.com/zchelalo/go_microservices_response v0.0.2 h1:Mmez2KXHleMW4G4jAxDJipdItt4QScbuNTdyaLUmgEU=

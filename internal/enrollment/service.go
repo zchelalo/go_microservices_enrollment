@@ -45,7 +45,7 @@ func (srv *service) Create(ctx context.Context, userId, courseId string) (*domai
 	enrollment := domain.Enrollment{
 		UserId:   userId,
 		CourseId: courseId,
-		Status:   "P",
+		Status:   domain.Pending,
 	}
 
 	if _, err := srv.userTransporter.Get(userId); err != nil {
@@ -74,6 +74,15 @@ func (srv *service) GetAll(ctx context.Context, filters Filters, offset, limit i
 
 func (srv *service) Update(ctx context.Context, id string, status *string) error {
 	srv.log.Println("update enrollment service")
+
+	if status != nil {
+		switch domain.EnrollmentStatus(*status) {
+		case domain.Pending, domain.Active, domain.Studying, domain.Inactive:
+		default:
+			return ErrInvalidStatus{*status}
+		}
+	}
+
 	return srv.repository.Update(ctx, id, status)
 }
 

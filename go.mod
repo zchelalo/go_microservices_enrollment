@@ -5,7 +5,7 @@ go 1.22.5
 require (
 	github.com/go-kit/kit v0.13.0
 	github.com/joho/godotenv v1.5.1
-	github.com/zchelalo/go_microservices_domain v0.0.3
+	github.com/zchelalo/go_microservices_domain v0.0.4
 	github.com/zchelalo/go_microservices_response v0.0.2
 	gorm.io/driver/postgres v1.5.9
 	gorm.io/gorm v1.25.11

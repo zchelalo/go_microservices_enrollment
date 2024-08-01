@@ -113,6 +113,9 @@ func makeUpdateEndpoint(service Service) Controller {
 			if errors.As(err, &ErrNotFound{}) {
 				return nil, response.NotFound(err.Error())
 			}
+			if errors.As(err, &ErrInvalidStatus{}) {
+				return nil, response.BadRequest(err.Error())
+			}
 			return nil, response.InternalServerError(err.Error())
 		}
 
